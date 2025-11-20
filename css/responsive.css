@@ -6,7 +6,7 @@
 }
 
 @media (max-width: 992px) {
-    .about-content {
+    .about-content, .contact-content {
         grid-template-columns: 1fr;
     }
     
@@ -223,6 +223,20 @@
         grid-template-columns: 1fr;
         gap: 30px;
     }
+
+    /* Scroll down button mobile */
+    .scroll-down {
+        bottom: 20px;
+    }
+    
+    .scroll-down-btn {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .scroll-down-btn i {
+        font-size: 1.1rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -381,6 +395,19 @@
     .genre-card p {
         fontSize: 0.8rem;
     }
+
+    /* Hero section mobile adjustments */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero h2 {
+        font-size: 1.2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
 }
 
 /* iPhone X and similar devices */
@@ -519,6 +546,18 @@
     .video-item:active {
         transform: scale(0.98);
     }
+
+    .scroll-down-btn:hover {
+        transform: none;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--accent-gold);
+    }
+    
+    .scroll-down-btn:active {
+        background: var(--accent-gold);
+        color: var(--primary-dark);
+        transform: scale(0.95);
+    }
 }
 
 /* Reduced motion preferences */
@@ -538,6 +577,10 @@
         -webkit-text-fill-color: initial;
         text-shadow: none;
     }
+
+    .scroll-down {
+        animation: none !important;
+    }
 }
 
 /* Dark mode support */
@@ -547,7 +590,7 @@
 
 /* Print styles */
 @media print {
-    .navbar, .mobile-menu-btn, .cta-buttons, .contact-form, .social-links, .modal, .floating-elements {
+    .navbar, .mobile-menu-btn, .cta-buttons, .contact-form, .social-links, .modal, .floating-elements, .scroll-down {
         display: none !important;
     }
     

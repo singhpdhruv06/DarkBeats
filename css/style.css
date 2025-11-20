@@ -175,7 +175,7 @@ header.scrolled {
     cursor: pointer;
 }
 
-/* Hero Section */
+/* Hero Section - Mobile Background Fix */
 .hero {
     height: 100vh;
     display: flex;
@@ -252,6 +252,125 @@ header.scrolled {
     }
     100% {
         transform: translateY(0) rotate(360deg);
+    }
+}
+
+/* Ensure floating elements are visible on mobile */
+@media (max-width: 768px) {
+    .floating-element {
+        opacity: 0.5; /* Slightly more visible on mobile */
+        animation-duration: 8s; /* Slower animation for better performance */
+    }
+    
+    .element-1, .element-2, .element-3, .element-4 {
+        display: block !important; /* Force display on mobile */
+    }
+    
+    .element-1 {
+        width: 80px;
+        height: 80px;
+        top: 15%;
+        left: 5%;
+    }
+    
+    .element-2 {
+        width: 100px;
+        height: 100px;
+        top: 70%;
+        right: 5%;
+    }
+    
+    .element-3 {
+        width: 60px;
+        height: 60px;
+        bottom: 15%;
+        left: 10%;
+    }
+    
+    .element-4 {
+        width: 90px;
+        height: 90px;
+        top: 25%;
+        right: 10%;
+    }
+}
+
+/* Scroll Down Button */
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    animation: bounce 2s infinite;
+}
+
+.scroll-down-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--accent-gold);
+    color: var(--accent-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.scroll-down-btn:hover {
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.scroll-down-btn i {
+    font-size: 1.2rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Mobile adjustments for scroll button */
+@media (max-width: 768px) {
+    .scroll-down {
+        bottom: 20px;
+    }
+    
+    .scroll-down-btn {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .scroll-down-btn i {
+        font-size: 1.1rem;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .scroll-down-btn:hover {
+        transform: none;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--accent-gold);
+    }
+    
+    .scroll-down-btn:active {
+        background: var(--accent-gold);
+        color: var(--primary-dark);
+        transform: scale(0.95);
     }
 }
 
@@ -338,7 +457,6 @@ header.scrolled {
     box-shadow: 0 10px 20px rgba(30, 144, 255, 0.5);
 }
 
-/* Updated Trust Indicators - Smaller and more compact */
 /* Updated Trust Indicators - Smaller and more compact */
 .trust-indicators {
     display: flex;
@@ -906,135 +1024,6 @@ header.scrolled {
     content: '✓';
     color: var(--accent-gold);
     font-weight: bold;
-}
-
-/* Testimonials Section */
-.testimonials {
-    background-color: var(--secondary-dark);
-    position: relative;
-    overflow: hidden;
-}
-
-.testimonials:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 70% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 30% 70%, rgba(32, 178, 170, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-.testimonial-slider {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.testimonial-item {
-    background-color: var(--primary-dark);
-    border-radius: 8px;
-    padding: 40px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    display: none;
-}
-
-.testimonial-item.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.testimonial-text {
-    font-size: 1.1rem;
-    font-style: italic;
-    margin-bottom: 30px;
-    color: var(--text-light);
-    position: relative;
-}
-
-.testimonial-text:before, .testimonial-text:after {
-    content: '"';
-    font-size: 3rem;
-    color: var(--accent-gold);
-    position: absolute;
-    opacity: 0.3;
-}
-
-.testimonial-text:before {
-    top: -20px;
-    left: -10px;
-}
-
-.testimonial-text:after {
-    bottom: -40px;
-    right: -10px;
-}
-
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-}
-
-.author-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid var(--accent-gold);
-}
-
-.avatar-initial {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--accent-gold), var(--thai-orange));
-    color: var(--primary-dark);
-    font-size: 1.5rem;
-    font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.author-info h4 {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-}
-
-.author-info p {
-    font-size: 0.9rem;
-    color: var(--text-gray);
-}
-
-.testimonial-nav {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 30px;
-}
-
-.testimonial-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: var(--text-gray);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.testimonial-dot.active {
-    background-color: var(--accent-gold);
-    transform: scale(1.2);
 }
 
 /* Contact Section */
