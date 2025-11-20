@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://darkbeats.com/sitemap.xml
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
