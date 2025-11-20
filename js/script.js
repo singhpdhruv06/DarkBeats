@@ -49,6 +49,62 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Smooth scroll for scroll-down button
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollDownBtn = document.querySelector('.scroll-down-btn');
+    
+    if (scrollDownBtn) {
+        scrollDownBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+    
+    // Enhanced floating elements for mobile
+    const floatingElements = document.querySelectorAll('.floating-element');
+    
+    floatingElements.forEach((element, index) => {
+        // Set random initial positions and animations
+        const randomX = Math.random() * 80 + 10;
+        const randomY = Math.random() * 80 + 10;
+        const randomDelay = Math.random() * 5;
+        const randomDuration = Math.random() * 3 + 5;
+        
+        element.style.left = `${randomX}%`;
+        element.style.top = `${randomY}%`;
+        element.style.animationDelay = `${randomDelay}s`;
+        element.style.animationDuration = `${randomDuration}s`;
+        
+        // Ensure elements are visible on mobile
+        if (window.innerWidth <= 768) {
+            element.style.opacity = '0.5';
+            element.style.animationDuration = '8s';
+        }
+    });
+    
+    // Adjust floating elements on window resize
+    window.addEventListener('resize', function() {
+        floatingElements.forEach(element => {
+            if (window.innerWidth <= 768) {
+                element.style.opacity = '0.5';
+                element.style.animationDuration = '8s';
+            } else {
+                element.style.opacity = '0.7';
+                element.style.animationDuration = '6s';
+            }
+        });
+    });
+});
+
 // Testimonial Slider
 const testimonialItems = document.querySelectorAll('.testimonial-item');
 const testimonialDots = document.querySelectorAll('.testimonial-dot');
@@ -164,24 +220,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Add floating elements animation
-document.addEventListener('DOMContentLoaded', function() {
-    const floatingElements = document.querySelectorAll('.floating-element');
-    
-    floatingElements.forEach((element, index) => {
-        // Set random initial positions and animations
-        const randomX = Math.random() * 80 + 10;
-        const randomY = Math.random() * 80 + 10;
-        const randomDelay = Math.random() * 5;
-        const randomDuration = Math.random() * 3 + 5;
-        
-        element.style.left = `${randomX}%`;
-        element.style.top = `${randomY}%`;
-        element.style.animationDelay = `${randomDelay}s`;
-        element.style.animationDuration = `${randomDuration}s`;
-    });
-});
-
 // Lazy loading for images
 document.addEventListener('DOMContentLoaded', function() {
     const lazyImages = document.querySelectorAll('img[data-src]');
@@ -269,4 +307,10 @@ if (contactForm) {
 document.addEventListener('DOMContentLoaded', function() {
     // Check if all required elements exist before initializing features
     console.log('Dark Beats website loaded successfully!');
+    
+    // Initialize any additional features here
+    const scrollDown = document.querySelector('.scroll-down');
+    if (scrollDown) {
+        console.log('Scroll down button initialized');
+    }
 });
